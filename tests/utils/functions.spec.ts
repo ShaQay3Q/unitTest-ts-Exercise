@@ -27,4 +27,9 @@ describe("createUser", () => {
     expect(() => createUser("Julian Vogel", 121)).toThrowError("Inacceptable age entry")
     expect(() => createUser("Julian Vogel", -1)).toThrowError("Inacceptable age entry")
   })
+
+  test("no numbers in the name", () => {
+    expect(() => createUser("Jul1an Vogel", 32)).toThrowError("No numbers allowed in the name")
+    expect(() => createUser("Julian V0gel", 32)).toThrowError("No numbers allowed in the name")
+  })
 });
