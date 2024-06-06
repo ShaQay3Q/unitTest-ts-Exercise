@@ -10,15 +10,19 @@ type User = {
 // No numbers in the name field => throw Error (put a bit more effort in)
 export function createUser(name: string, age: number): User  {
     const nameArr = name.trim().split(" ")
-    const lettersArr = name.trim().split("")
+    // const lettersArr = name.trim().split("")
 
-    for (let letter of lettersArr){
-        if (parseInt(letter) || letter === "0") throw new Error("No numbers allowed in the name")
-    }
+    // for (let letter of lettersArr){
+    //     if (parseInt(letter) || letter === "0") throw new Error("No numbers allowed in the name")
+    // }
     
+
+    if(name.match(/\d/g)) throw new Error("No numbers allowed in the name")
+
+    if(nameArr.length !== 2) throw new Error("Incorrect name format")        
+
     if(age < 0 || age > 120) throw new Error("Inacceptable age entry")
     
-    if(nameArr.length !== 2) throw new Error("Incorrect name format")        
 
     return {
         firstName: nameArr[0],

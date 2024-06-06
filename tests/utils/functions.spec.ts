@@ -1,4 +1,4 @@
-import { test, expect, describe } from "vitest";
+import { test, expect, describe, it } from "vitest";
 import {createUser} from "../../src/utils/functions";
 
 describe("createUser", () => {
@@ -28,7 +28,7 @@ describe("createUser", () => {
     expect(() => createUser("Julian Vogel", -1)).toThrowError("Inacceptable age entry")
   })
 
-  test("no numbers in the name", () => {
+  test("should throw if a number is in the name", () => {
     expect(() => createUser("Jul1an Vogel", 32)).toThrowError("No numbers allowed in the name")
     expect(() => createUser("Julian V0gel", 32)).toThrowError("No numbers allowed in the name")
   })
